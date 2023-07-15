@@ -226,6 +226,7 @@ namespace BookStoreItem.Tests
         public void BookStoreItem_ArgumentIsInvalid_ThrowsArgumentException(string authorName, string title, string publisher, string isbn, string parameterName)
         {
             // Assert
+#pragma warning disable IDE0058
             Assert.Throws<ArgumentException>(() =>
             {
                 try
@@ -239,6 +240,7 @@ namespace BookStoreItem.Tests
                     throw;
                 }
             });
+#pragma warning restore IDE0058
         }
 
         [TestCase("", "0000000121354025", "Complete Stories and Poems of Edgar Allan Poe", "Doubleday", "0385074077", "authorName")]
@@ -254,6 +256,7 @@ namespace BookStoreItem.Tests
         public void BookStoreItem_WithIsni_ArgumentIsInvalid_ThrowsArgumentException(string authorName, string isni, string title, string publisher, string isbn, string parameterName)
         {
             // Assert
+#pragma warning disable IDE0058
             Assert.Throws<ArgumentException>(() =>
             {
                 try
@@ -267,12 +270,14 @@ namespace BookStoreItem.Tests
                     throw;
                 }
             });
+#pragma warning restore IDE0058
         }
 
         [TestCaseSource(nameof(BookStoreItemWithPublishedArgumentIsInvalidData))]
         public void BookStoreItem_WithPublished_ArgumentIsInvalid_ThrowsArgumentException(string authorName, string title, string publisher, string isbn, DateTime published, string bookBinding, decimal price, string currency, int amount, string parameterName)
         {
             // Assert
+#pragma warning disable IDE0058
             Assert.Throws<ArgumentException>(() =>
             {
                 try
@@ -286,12 +291,14 @@ namespace BookStoreItem.Tests
                     throw;
                 }
             });
+#pragma warning restore IDE0058
         }
 
         [TestCaseSource(nameof(BookStoreItemWithIsniAndPublishedArgumentIsInvalidData))]
         public void BookStoreItem_WithIsniAndPublished_ArgumentIsInvalid_ThrowsArgumentException(string authorName, string isni, string title, string publisher, string isbn, DateTime published, string bookBinding, decimal price, string currency, int amount, string parameterName)
         {
             // Assert
+#pragma warning disable IDE0058
             Assert.Throws<ArgumentException>(() =>
             {
                 try
@@ -305,6 +312,7 @@ namespace BookStoreItem.Tests
                     throw;
                 }
             });
+#pragma warning restore IDE0058
         }
 
         [Test]
@@ -314,7 +322,9 @@ namespace BookStoreItem.Tests
             var bookStoreItem = new BookStoreItem(authorName: "Edgar Allan Poe", title: "Complete Stories and Poems of Edgar Allan Poe", publisher: "Doubleday", isbn: "0385074077");
 
             // Assert
+#pragma warning disable IDE0058
             Assert.Throws<InvalidOperationException>(() => bookStoreItem.GetIsniUri());
+#pragma warning restore IDE0058
         }
 
         [TestCase("Edgar Allan Poe", "Complete Stories and Poems of Edgar Allan Poe", "Doubleday", "0385074077")]
@@ -510,7 +520,9 @@ namespace BookStoreItem.Tests
         [TestCase("Amount", typeof(int), true, true, true, true)]
         public void HasProperty(string propertyName, Type propertyType, bool hasGet, bool isGetPublic, bool hasSet, bool isSetPublic)
         {
+#pragma warning disable IDE0058
             this.AssertThatClassHasProperty(propertyName, propertyType, hasGet, isGetPublic, hasSet, isSetPublic);
+#pragma warning restore IDE0058
         }
 
         [TestCase("GetIsniUri", false, true, false, typeof(Uri))]
@@ -522,7 +534,9 @@ namespace BookStoreItem.Tests
         [TestCase("ThrowExceptionIfCurrencyIsNotValid", true, false, false, typeof(void))]
         public void HasMethod(string methodName, bool isStatic, bool isPublic, bool isVirtual, Type returnType)
         {
+#pragma warning disable IDE0058
             this.AssertThatClassHasMethod(methodName, isStatic, isPublic, isVirtual, returnType);
+#pragma warning restore IDE0058
         }
 
         [TestCaseSource(nameof(HasPrivateStaticMethodData))]
